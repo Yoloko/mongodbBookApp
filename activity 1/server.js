@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
-
+  
 const databaseUrl = "warmup";
 const collections = ["books"];
 
@@ -48,7 +48,7 @@ app.post("/submit", ({ body }, res) => {
 });
 
 // Find all books marked as read
-app.get("/read", (req, res) => { });
+app.get("/read", function (req, res) { 
 db.books.findOne({ read: true }, function (err, found) {
   if (err) {
     console.log(err)
@@ -57,9 +57,9 @@ db.books.findOne({ read: true }, function (err, found) {
   }
 
 })
-
+});
 // Find all books marked as unread
-app.get("/unread", (req, res) => { });
+app.get("/unread", function (req, res){ 
 db.books.findOne({ read: false }, function (err, found) {
   if (err) {
     console.log(err)
@@ -68,7 +68,7 @@ db.books.findOne({ read: false }, function (err, found) {
   }
 
 })
-
+})
 
 
 //update
